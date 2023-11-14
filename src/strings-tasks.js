@@ -170,14 +170,12 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences( str, value ) {
-  const index = str.lastIndexOf(value);
-  const newStr = str.slice(index, index + value.length);
-  let res = ''
-  for(let i = str.length; i >= 0; i -= 1) {
-    res = str.replace(newStr, '')
+function removeLastOccurrences(str, value) {
+  if (str.includes(value)) {
+    const index = str.lastIndexOf(value);
+    return str.slice(0, index) + str.slice(index + value.length);
   }
-  return res;
+  return str;
 }
 
 /**
